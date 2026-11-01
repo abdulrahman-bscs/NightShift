@@ -1,0 +1,18 @@
+{
+  "name": "nightshift-master",
+  "version": "1.0.0",
+  "description": "NIGHTSHIFT — Cinematic Automotive & City Narrative Experience (Semester 6 Full-Stack Web Project)",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -k -n \"SERVER,CLIENT\" -c \"red,green\" \"npm run server\" \"npm run client\"",
+    "server": "npm --prefix server run dev",
+    "client": "npm --prefix client run dev",
+    "build": "npm --prefix client run build",
+    "seed": "npm --prefix server run seed",
+    "copy:media": "node scripts/copy-media.js",
+    "test": "npm --prefix server run test"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

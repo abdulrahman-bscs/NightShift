@@ -1,0 +1,187 @@
+@import './design-tokens.css';
+
+/* Universal Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--color-base);
+  color: var(--color-ivory);
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-base);
+  color: var(--color-ivory);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-forest);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-emerald);
+}
+
+/* Typography Utility Classes */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Hero & Section Headlines */
+.headline-serif {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-emerald);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* Container & Grids */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-gutter);
+  padding-right: var(--container-gutter);
+}
+
+.section-spacing {
+  padding-top: var(--section-spacing);
+  padding-bottom: var(--section-spacing);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 9999px;
+  padding: 0.85rem 1.85rem;
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-emerald);
+  outline-offset: 3px;
+}
+
+/* Refined Ivory Pill with Wipe Effect */
+.btn-pill {
+  color: var(--color-ivory);
+  background: transparent;
+  border: 1px solid var(--border-delicate);
+}
+
+.btn-pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-ivory);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--transition-wipe);
+  z-index: -1;
+}
+
+.btn-pill:hover {
+  color: var(--color-base);
+  border-color: var(--color-ivory);
+}
+
+.btn-pill:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Signature Crimson Button */
+.btn-crimson {
+  background-color: var(--color-crimson);
+  color: var(--color-ivory);
+  border: 1px solid var(--color-crimson);
+}
+
+.btn-crimson:hover {
+  background-color: var(--color-crimson-hover);
+  border-color: var(--color-crimson-hover);
+  box-shadow: 0 4px 20px rgba(191, 16, 41, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Minimal Ghost Button */
+.btn-ghost {
+  background: transparent;
+  color: var(--color-muted);
+  border: none;
+  padding: 0.5rem 0;
+  border-radius: 0;
+  border-bottom: 1px solid transparent;
+}
+
+.btn-ghost:hover {
+  color: var(--color-ivory);
+  border-bottom-color: var(--color-crimson);
+}
+
+/* Accessible Focus States */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--color-emerald);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Optimization */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .btn-pill::before {
+    display: none;
+  }
+}
